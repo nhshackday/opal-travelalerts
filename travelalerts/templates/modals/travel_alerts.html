@@ -1,0 +1,41 @@
+{% extends 'modal_base.html' %}
+
+{% load forms %}
+
+{% block icon_name %}fa fa-warning{% endblock %}
+{% block title %}Travel alerts for [[ destination ]]{% endblock %}
+{% block modal_body %}
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <td>Date</td>
+        <td>Alert</td>
+        <td>Disease</td>
+        <td>Place</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="alert in alerts">
+        <td>
+          [[ alert.date ]]
+        </td>
+        <td>
+          <a href="[[ alert.link ]]" target="_blank">
+            [[ alert.alert ]]
+          </a>
+        </td>
+        <td>
+          [[ alert.disease ]]
+        </td>
+        <td>
+          [[ alert.country ]]
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div ng-show="alerts.length == 0">
+    Fetching alerts for [[ destination ]]...
+  </div>
+{% endblock %}
+{% block modal_save %}{% endblock %}
+{% block modal_another %}{% endblock %}
